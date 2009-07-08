@@ -1,0 +1,34 @@
+<h1>Neues Dokument</h1>
+
+<% form_for(@document) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= label_tag "Autor:" %>
+    <%= @subject.name %>
+		(Clearance: <%= @subject.level.id %>)
+  </p>
+  <p>
+    <%= f.label :name, 'Titel:' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :content, 'Inhalt:' %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :classification, 'Klassifizierung:' %><br />
+		<% for level in @secret_levels %>
+			<%= radio_button_tag "document[classification]", level.id, false, :disabled => true %>
+			<span style="color: #CC0000;"><%= level.id %> (<%= level.name %>)</span><br />
+		<% end %>
+		<% for level in @levels %>
+			<%= radio_button_tag "document[classification]", level.id, false, :disabled => false %>
+			<%= level.id %> (<%= level.name %>)<br />
+		<% end %>
+		
+		<% select_tag "document[classification]", options_from_collection_for_select(@levels, "id", "name") %>
+  </p>
+  <p>
+    <%= f.submit "Absenden" %>
+  </p>
+<% end %>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Secret Service FBI</title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+
+	<div id="navigation" style="background: #ECECEC; padding: 0.5em 0.5em 1em 1em;">
+		<%= image_tag 'logo.png', :width => '80px', :height => '80px', :style => "float: right;" %>
+		<strong>Eingeloggt als:</strong>
+		<%= @subject.name unless @subject.nil? %>
+		<br />
+		<strong>Clearance:</strong>
+		<%= @subject.level.id unless @subject.nil? %>
+		(<%= @subject.level.name unless @subject.nil? %>)
+		<br /><br />
+		<div>
+			<strong>Navigation:</strong>&nbsp;
+			<%= link_to 'Dokumentenübersicht', documents_path %>&nbsp;|&nbsp;
+			<%= link_to 'Neues Dokument anlegen', new_document_path %>&nbsp;|&nbsp;
+			<%= link_to 'abmelden', logout_path %>
+
+		</div>
+	</div>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<div id="content" style="padding: 0.5em 0.5em 1em 1em;">
+	<%= yield  %>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+
+<h1>Dokumente</h1>
+
+<% if !@levels.blank? %>
+	<% for level in @levels %>
+		<h2>Klasse: <%= level.id %> (<%= level.name %>)</h2>
+		<div style="margin-left: 2em;">
+		
+		<% if @subject.clearance < level.id %>
+		<table>
+			<tr>
+				<th width="200">Dokumententitel</th>
+				<th width="150">Verfasser</th>
+			</tr>
+			<% for document in level.documents %>
+				<tr>
+					<td><%=h document.name %></td>
+					<td><%=h document.author.name %></td>
+					<td style="color: #CC0000">Zugriff nicht gestattet</td>
+				</tr>
+			<% end %>
+		</table>
+		<% else %>
+			<table>
+				<tr>
+					<th width="200">Dokumententitel</th>
+					<th width="150">Verfasser</th>
+				</tr>
+				<% for document in level.documents %>
+					<tr>
+						<td><%=h document.name %></td>
+						<td><%=h document.author.name %></td>
+						<td><%= link_to 'Ansehen', document %></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+		</div>
+	<% end %>
+<% end %>
+

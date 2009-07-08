@@ -1,0 +1,23 @@
+<h1>Subjekt bearbeiten</h1>
+
+<% form_for(@subject) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :clearance %><br />
+		<%= select_tag "subject[clearance]", options_from_collection_for_select(@levels, "id", "name") %>
+  </p>
+  <p>
+    <%= f.label :password, 'Passwort' %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.submit "speichern" %>
+  </p>
+<% end %>
+
+<%= link_to 'zurück', admin_path %>

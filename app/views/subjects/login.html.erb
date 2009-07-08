@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Secret Service FBI</title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+	<div style="float: right;">
+		<a href="/tutorial/site/index.html">Anleitung</a>&nbsp;&nbsp;
+	</div>
+&nbsp;&nbsp;<%= link_to 'Admin Dashboard', admin_path %>
+<br />
+	<div id="login_form">
+		<%= image_tag 'logo.png' %>
+
+		<p>
+			Bitte geben sie ihren Namen und ihr Passwort ein:
+		</p>
+		<% form_for :subject do |f| -%>
+		  <p>Name:<br />
+			  <%= f.text_field :name %>
+			</p>
+			<p>Passwort:<br />
+				<%= f.password_field :password %>
+			</p>
+			<p>
+				<%= f.submit "Einloggen" %>
+			</p>
+		<% end -%>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<h2><%=h @document.name %></h2>
+
+<p>
+  <b>Klassifizierung:</b>
+  <%=h @document.classification %><br />
+  <b>Autor:</b>
+  <%=h @document.author.name %> (Clearance: <%= @document.author.level.id %>)
+</p>
+
+<h3>Inhalt:</h3>
+<p><%=h @document.content %></p>
